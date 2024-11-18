@@ -2,6 +2,7 @@ import os
 import pytest
 from src.XMLDataReader import XMLDataReader
 
+
 @pytest.fixture
 def valid_xml_file():
     file_path = 'test_data.xml'

@@ -15,7 +15,8 @@ class XMLDataReader(DataReader):
             data = {}
             for student in root:
                 name = student.tag
-                scores = {subject.tag: int(subject.text) for subject in student}
+                scores = {subject.tag: int(subject.text) for subject
+                          in student}
                 data[name] = scores
 
             return data
