@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - task3
 
 jobs:
   build:
