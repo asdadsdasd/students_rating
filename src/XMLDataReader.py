@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from lxml import etree
 from Types import DataType
 from DataReader import DataReader
@@ -6,7 +7,8 @@ from DataReader import DataReader
 class XMLDataReader(DataReader):
     def read(self, path: str) -> DataType:
         """
-        Читает XML-файл и возвращает данные в формате DataType.
+        Читает XML-файл и возвращает данные в формате:
+        { 'Студент': [('предмет', оценка), ...] }
         """
         try:
             tree = etree.parse(path)
@@ -15,8 +17,8 @@ class XMLDataReader(DataReader):
             data = {}
             for student in root:
                 name = student.tag
-                scores = {subject.tag: int(subject.text) for subject
-                          in student}
+                scores = [(subject.tag, int(subject.text))
+                          for subject in student]
                 data[name] = scores
 
             return data
