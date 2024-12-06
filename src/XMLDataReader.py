@@ -6,10 +6,6 @@ from DataReader import DataReader
 
 class XMLDataReader(DataReader):
     def read(self, path: str) -> DataType:
-        """
-        Читает XML-файл и возвращает данные в формате:
-        { 'Студент': [('предмет', оценка), ...] }
-        """
         try:
             tree = etree.parse(path)
             root = tree.getroot()
